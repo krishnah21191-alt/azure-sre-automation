@@ -1,0 +1,18 @@
+name: Automated Server Health Check
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  check-disk:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository code
+        uses: actions/checkout@v4
+
+      - name: Run Disk Alert Script
+        run: |
+          chmod +x disk-alert.sh
+          ./disk-alert.sh
